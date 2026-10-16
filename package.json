@@ -1,0 +1,20 @@
+{
+  "name": "dsh-git-core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The shared git operations layer for the dsh-git bundles: one place a git command is run, one state store, one file recorder.",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/git.mjs",
+  "exports": {
+    "./git.mjs": "./lib/git.mjs",
+    "./state.mjs": "./lib/state.mjs",
+    "./session-files.mjs": "./lib/session-files.mjs",
+    "./merge-proof.mjs": "./lib/merge-proof.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ]
+}
