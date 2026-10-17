@@ -1,0 +1,14 @@
+# Bundle patch for dsh-git-core — deliberately empty.
+#
+# This package is a library, not a plugin: it registers no tool, no command and
+# no listener, so it contributes no row.
+#
+# The patch exists for one reason: the Harness installer only treats a package as
+# installable when it declares `dsh.bundle.patch`. Installing it puts the package
+# in the profile's node_modules, and that is what makes it resolvable by the
+# bundles that depend on it — a `link:` install does not hoist a bundle's
+# dependencies, so `dsh-git` and `dsh-git-worktrees` find it through
+# `$DSH_PROFILE_DIR/node_modules`, probed by their `lib/core-loader.mjs`.
+#
+# No rows follow: the list is empty on purpose.
+[]
