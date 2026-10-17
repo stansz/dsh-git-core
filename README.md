@@ -72,8 +72,8 @@ state file held exclusively across processes, written to a temporary file and
 renamed into place.
 
 The file is `<stateRoot>/dsh-git/sessions/<safeSessionId>.json`, where
-`stateRoot` is the caller's override, else `$DSH_HOME/state`, else
-`~/.dsh/state`. Session ids are escaped before they become a filename. Every
+`stateRoot` is the caller's override, else `<harness home>/state` — `$DSH_HOME`
+when it is set, else the home derived from `$DSH_PROFILE_DIR`, else `~/.dsh`. Session ids are escaped before they become a filename. Every
 function is fail-soft: an unreadable, corrupt or unwritable state file costs an
 ownership line or a retry schedule, never an exception across a module
 boundary.
@@ -138,8 +138,8 @@ Both bundles declare `"dsh-git-core": "link:../dsh-git-core"`, and a `link:`
 install does not hoist a bundle's dependencies. A bare
 `import 'dsh-git-core/git.mjs'` therefore cannot resolve: Node walks up
 from the importing file's real path in the workspace, never through the
-profile's `node_modules`. The same problem both bundles already solve for
-schemastery, solved the same way.
+profile's `node_modules`. This is the same approach dsh-git already uses to
+resolve its schemastery dependency, applied to the core.
 
 Each bundle ships a small `lib/core-loader.mjs` with one export,
 `loadCore(name)`, and thin shims (`lib/git.mjs`, `lib/state.mjs`,
