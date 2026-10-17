@@ -192,6 +192,14 @@ So it is installed first:
 push. A bundle installed without the core fails at activation with the sentence
 above, which names the missing core. Installing the core alone changes nothing.
 
+## Tests
+
+`node --test` from the repository root: no install step, no dependency, no
+network. Every fixture is a real git repository created with the real git binary
+in a temporary directory, so the parsers are fed git output and the operations
+are checked against the repository they changed — not against a remembered
+shape. There is no GitHub client here; the modules that talk to GitHub
+(`dsh-git`) test it against a local stand-in.
 ## Files
 
 - `lib/git.mjs` — the git operations layer.
