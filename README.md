@@ -73,10 +73,10 @@ renamed into place.
 
 The file is `<stateRoot>/dsh-git/sessions/<safeSessionId>.json`, where
 `stateRoot` is the caller's override, else `<harness home>/state` — `$DSH_HOME`
-when it is set, else the home derived from `$DSH_PROFILE_DIR`, else `~/.dsh`. Session ids are escaped before they become a filename. Every
-function is fail-soft: an unreadable, corrupt or unwritable state file costs an
-ownership line or a retry schedule, never an exception across a module
-boundary.
+when it is set, else the home derived from `$DSH_PROFILE_DIR`, else `~/.dsh`.
+Session ids are escaped before they become a filename. Every function is
+fail-soft: an unreadable, corrupt or unwritable state file costs an ownership
+line or a retry schedule, never an exception across a module boundary.
 
 Exports: `safeSessionId`, `statePath`, `readSession`, `writeSession`,
 `addWorktree`, `removeWorktree`, `forgetVanished`, `recordPushFailure`,
