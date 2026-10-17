@@ -1,0 +1,19 @@
+name: tests
+
+# Node's built-in test runner over real git repositories in temporary
+# directories. No install step, no dependency, no network.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run the suite
+        run: node --test
