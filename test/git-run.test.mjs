@@ -281,6 +281,12 @@ describe('repository identity', () => {
     assert.equal(await toplevel(join(repo, 'sub/dir/file.txt')), repo);
     // A file deleted during the turn still belongs to the repository around it.
     assert.equal(await toplevel(join(repo, 'sub/dir/deleted.txt')), repo);
+    // A file being CREATED in a directory that does not exist yet: the recorder
+    // resolves the path before the write runs, so every level below the root is
+    // absent. It still belongs to the repository, or the write is never recorded
+    // and the automatic commit reports the session did no work there.
+    assert.equal(await toplevel(join(repo, 'brand/new/dir/file.txt')), repo);
+    assert.equal(await toplevel(join(repo, 'brand/new')), repo);
   });
 
   test('toplevel() is undefined outside a working tree, including a bare repository', async () => {
