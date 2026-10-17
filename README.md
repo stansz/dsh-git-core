@@ -142,9 +142,9 @@ profile's `node_modules`. This is the same approach dsh-git already uses to
 resolve its schemastery dependency, applied to the core.
 
 Each bundle ships a small `lib/core-loader.mjs` with one export,
-`loadCore(name)`, and thin shims (`lib/git.mjs`, `lib/state.mjs`,
-`lib/merge-proof.mjs`) that re-export the core's names and add no logic. The
-loader tries four locations in order:
+`loadCore(name)`, and thin shims — `lib/git.mjs`, `lib/state.mjs`,
+`lib/merge-proof.mjs`, and `dsh-git`'s `lib/session-files.mjs` — that re-export
+the core's names and add no logic. The loader tries four locations in order:
 
 1. the sibling directory — `../../dsh-git-core/lib/<name>`, relative to the
    loader's own URL (a checkout beside the bundle)
